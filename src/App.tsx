@@ -4,6 +4,7 @@ import Intro from "./components/Intro";
 import ExperienceScrapbook from "./components/ExperienceScrapbook";
 import ContactLinks from "./components/ContactLinks";
 import ContactPage from "./components/ContactPage";
+import ProjectGrid from "./components/ProjectGrid";
 import { profile } from "./data/profile";
 import { pageNumber, pages, type PageId } from "./data/pages";
 
@@ -17,13 +18,13 @@ function currentRoute(): Route {
 const pageBodies: Record<PageId, ReactNode> = {
   experience: <ExperienceScrapbook />,
   projects: (
-    <div className="empty-state"><span className="section-label">In the making</span><h2>Making room for the work.</h2><p>Project write-ups are on their way.</p></div>
+    <ProjectGrid category="projects" empty={<div className="empty-state"><span className="section-label">In the making</span><h2>Making room for the work.</h2><p>Project write-ups are on their way.</p></div>} />
   ),
   academic: (
-    <div className="empty-state"><span className="section-label">On the syllabus</span><h2>Notes from the classroom.</h2><p>Class projects, papers, and research write-ups will live here.</p></div>
+    <ProjectGrid category="academic" empty={<div className="empty-state"><span className="section-label">On the syllabus</span><h2>Notes from the classroom.</h2><p>Class projects, papers, and research write-ups will live here.</p></div>} />
   ),
   fun: (
-    <div className="empty-state"><span className="section-label">Room to play</span><h2>Little projects belong here, too.</h2><p>The first experiments will land here soon.</p></div>
+    <ProjectGrid category="fun" empty={<div className="empty-state"><span className="section-label">Room to play</span><h2>Little projects belong here, too.</h2><p>The first experiments will land here soon.</p></div>} />
   ),
   about: (
     <>
