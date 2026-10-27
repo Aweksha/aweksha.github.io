@@ -30,6 +30,8 @@ export type Project = {
     /** A demo video (YouTube, Loom, Google Drive) for projects that can't run online. */
     video?: string;
   };
+  /** The id of the role in experience.ts this came out of, if any. Links both ways. */
+  experience?: string;
   /** Put the image in /public/projects/ and use "/projects/name.png". */
   image?: { src: string; alt: string };
 };
@@ -49,6 +51,7 @@ export const projects: Project[] = [
     title: "Pink Calculator",
     category: "fun",
     meta: "Jun 2025 · Internship day one",
+    experience: "janus",
     summary: "Built on my first day interning at Janus Henderson, to get comfortable with Angular, TypeScript, and the Node toolchain before diving into the team’s codebase.",
     tags: ["Angular", "TypeScript", "Node.js", "CSS"],
   },
@@ -78,4 +81,8 @@ export const projects: Project[] = [
 
 export function projectsIn(category: ProjectCategory) {
   return projects.filter((project) => project.category === category);
+}
+
+export function projectsFrom(experienceId: string) {
+  return projects.filter((project) => project.experience === experienceId);
 }

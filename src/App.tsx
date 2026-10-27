@@ -2,17 +2,21 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import TopTicker from "./components/TopTicker";
 import Intro from "./components/Intro";
 import ExperienceScrapbook from "./components/ExperienceScrapbook";
+import ExperienceDetail from "./components/ExperienceDetail";
 import ContactLinks from "./components/ContactLinks";
 import ContactPage from "./components/ContactPage";
 import ProjectGrid from "./components/ProjectGrid";
 import { profile } from "./data/profile";
+import { findExperience } from "./data/experience";
 import { pageNumber, pages, type PageId } from "./data/pages";
 
 type Route = "home" | PageId;
 
-function currentRoute(): Route {
-  const hash = window.location.hash.slice(1);
-  return pages.find((page) => page.id === hash)?.id ?? "home";
+/** "#experience/janus-henderson" → page "experience", detail "janus-henderson". */
+function currentRoute(): { route: Route; detail?: string } {
+  const [id, detail] = window.location.hash.slice(1).split("/");
+  const page = pages.find((p) => p.id === id);
+  return page ? { route: page.id, detail } : { route: "home" };
 }
 
 const pageBodies: Record<PageId, ReactNode> = {
@@ -36,14 +40,15 @@ const pageBodies: Record<PageId, ReactNode> = {
 };
 
 function App() {
-  const [active, setActive] = useState(currentRoute);
+  const [{ route: active, detail }, setRoute] = useState(currentRoute);
   const mainRef = useRef<HTMLElement>(null);
   const page = pages.find((p) => p.id === active);
+  const experience = active === "experience" && detail ? findExperience(detail) : undefined;
 
   useEffect(() => {
     const navigate = () => {
       if (window.location.hash === "#main-content") return;
-      setActive(currentRoute());
+      setRoute(currentRoute());
       window.scrollTo(0, 0);
       mainRef.current?.focus({ preventScroll: true });
     };
@@ -52,8 +57,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.title = page ? `${page.label} · ${profile.name}` : `${profile.name} · Computer Science`;
-  }, [page]);
+    const label = experience ? `${experience.role}, ${experience.organization}` : page?.label;
+    document.title = label ? `${label} · ${profile.name}` : `${profile.name} · Computer Science`;
+  }, [page, experience]);
 
   return (
     <>
@@ -69,8 +75,10 @@ function App() {
           ))}
         </nav>
       </header>
-      <main id="main-content" ref={mainRef} tabIndex={-1} className="page" key={active}>
-        {page ? (
+      <main id="main-content" ref={mainRef} tabIndex={-1} className="page" key={experience?.id ?? active}>
+        {experience ? (
+          <ExperienceDetail experience={experience} />
+        ) : page ? (
           <section aria-labelledby={`${page.id}-heading`}>
             <p className="eyebrow">{pageNumber(page.id)} / {page.eyebrow}</p>
             <h1 id={`${page.id}-heading`}>{page.label}<span>.</span></h1>

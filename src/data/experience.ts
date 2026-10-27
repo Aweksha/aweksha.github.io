@@ -43,9 +43,16 @@ export type Experience = {
   size: ExperienceSize;
   artifactType: ArtifactType;
 
+  /**
+   * Optional, for the detail page. Each section is a heading plus paragraphs,
+   * e.g. { title: "What I achieved", paragraphs: ["…"] }.
+   * Projects linked to this role come from `experience` in projects.ts.
+   */
+  story?: { title: string; paragraphs: string[] }[];
+
   image?: { src: string; alt: string };
-  /** Deeper case-study page, once written. */
-  slug?: string;
+  /** The detail page lives at #experience/<slug>. */
+  slug: string;
 };
 
 export const experiences: Experience[] = [
@@ -273,6 +280,10 @@ export const experiencesByDate = [...experiences].sort((a, b) =>
 
 /** Newest first, for a resume-style list on the deeper page. */
 export const experiencesRecentFirst = [...experiencesByDate].reverse();
+
+export const experienceHref = (experience: Experience) => `#experience/${experience.slug}`;
+
+export const findExperience = (slug: string) => experiences.find((e) => e.slug === slug);
 
 export const unverified = experiences.filter((e) => !e.datesVerified);
 
