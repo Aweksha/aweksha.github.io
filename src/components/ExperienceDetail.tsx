@@ -2,6 +2,7 @@ import { experienceHref, experiencesRecentFirst, type Experience } from "../data
 import { pageNumber } from "../data/pages";
 import { projectsFrom } from "../data/projects";
 import { ProjectCard } from "./ProjectGrid";
+import ToolTags from "./ToolTags";
 
 /** The page at #experience/<slug>: everything about one role. */
 function ExperienceDetail({ experience }: { experience: Experience }) {
@@ -23,8 +24,8 @@ function ExperienceDetail({ experience }: { experience: Experience }) {
           <div><dt>Where</dt><dd>{experience.location}</dd></div>
           <div><dt>Focus</dt><dd>{experience.shortLabel}</dd></div>
           <div>
-            <dt>Built with</dt>
-            <dd><ul className="tags">{experience.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></dd>
+            <dt>Built with <span className="tool-hint">Tap one to see how I used it</span></dt>
+            <dd><ToolTags tags={experience.tags} notes={experience.toolNotes} /></dd>
           </div>
         </dl>
 

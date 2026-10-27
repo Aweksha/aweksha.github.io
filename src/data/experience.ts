@@ -39,6 +39,8 @@ export type Experience = {
   bullets: string[];
   /** "Built with". */
   tags: string[];
+  /** What each tag was used for, keyed by tag. Tags with a note open a small popup on the detail page. */
+  toolNotes?: Record<string, string>;
 
   size: ExperienceSize;
   artifactType: ArtifactType;
@@ -74,6 +76,13 @@ export const experiences: Experience[] = [
       "Building and connecting FastAPI services with the team in a shared GitHub repo",
     ],
     tags: ["Python", "FastAPI", "SQLAlchemy", "Alembic", "SQLite"],
+    toolNotes: {
+      Python: "The language the whole backend is written in.",
+      FastAPI: "Building the API services the app talks to, and connecting them with the rest of the team’s work.",
+      SQLAlchemy: "Defining the data models for game sessions, questions, players, answers, challenges, and awards.",
+      Alembic: "Writing the database migrations that create and evolve the schema.",
+      SQLite: "The app’s database. I set up foreign key enforcement so related records stay consistent.",
+    },
 
     size: "medium",
     artifactType: "terminal",
@@ -98,6 +107,12 @@ export const experiences: Experience[] = [
       "Coordinate fellow tutors so each one gets to lead part of a session",
     ],
     tags: ["Python", "C", "Java", "Git"],
+    toolNotes: {
+      Python: "One of the languages I help students write and debug.",
+      C: "One of the languages I help students write and debug.",
+      Java: "One of the languages I help students write and debug.",
+      Git: "Helping students get comfortable with version control, a topic we also cover in Workshop Wednesdays.",
+    },
 
     size: "small",
     artifactType: "workshop",
@@ -123,6 +138,14 @@ export const experiences: Experience[] = [
       "Presented the migration tool design and data warehouse security questions to the full technology org at the Q3 all-hands",
     ],
     tags: ["C#", "ASP.NET", "Angular", "Python", "SQL Server", "Snowflake"],
+    toolNotes: {
+      "C#": "The migration tool that turned an acquired firm’s research into structured records in the research database.",
+      "ASP.NET": "Backend API endpoints for the Company Tear Sheet app.",
+      Angular: "Frontend features for the Company Tear Sheet app, including charts for fixed income metrics like OAS and OAD.",
+      Python: "Refactoring the Fixed Income Quant team’s code and automating raw financial data into charts and reports.",
+      "SQL Server": "SQL queries behind the Company Tear Sheet app.",
+      Snowflake: "Querying the data warehouse for the Company Tear Sheet app.",
+    },
 
     size: "large",
     artifactType: "folder",
@@ -147,6 +170,12 @@ export const experiences: Experience[] = [
       "Applied patches and supported teams from first commit through testing",
     ],
     tags: ["Git", "GitHub", "Code Review", "Testing Workflows"],
+    toolNotes: {
+      Git: "Reviewing pushes and merges so teams didn’t break working code or overwrite each other’s work.",
+      GitHub: "Setting up and managing a repository for every student team.",
+      "Code Review": "Checking teams’ changes and applying patches before they caused problems.",
+      "Testing Workflows": "Supporting teams from their first commit through testing.",
+    },
 
     size: "small",
     artifactType: "terminal",
@@ -171,6 +200,11 @@ export const experiences: Experience[] = [
       "Used LLMs to interpret and structure research data for the lab’s phonetic transcription pipeline",
     ],
     tags: ["Python", "LLMs", "Data Preprocessing"],
+    toolNotes: {
+      Python: "Collecting, storing, and organizing data for the lab’s animal vocalization dataset.",
+      LLMs: "Interpreting and structuring research data for the lab’s phonetic transcription pipeline.",
+      "Data Preprocessing": "Converting frequency and language data into numeric formats the lab’s models could use.",
+    },
 
     size: "medium",
     artifactType: "research",
@@ -195,6 +229,11 @@ export const experiences: Experience[] = [
       "Introduced 3D visualization using neural networks",
     ],
     tags: ["Python", "Rhino", "3D Printing"],
+    toolNotes: {
+      Python: "Teaching students the basics of programming, for many of them for the first time.",
+      Rhino: "Teaching 3D modeling as students designed their own models.",
+      "3D Printing": "Taking students’ digital models all the way to finished prints.",
+    },
 
     size: "small",
     artifactType: "workshop",
@@ -219,6 +258,12 @@ export const experiences: Experience[] = [
       "Ran the makerspace and trained students on 3D printers, laser cutters, and Python and C for their builds",
     ],
     tags: ["Python", "C", "3D Printing", "Laser Cutting"],
+    toolNotes: {
+      Python: "Teaching students to program their makerspace builds.",
+      C: "Teaching students to program their makerspace builds.",
+      "3D Printing": "Training students on the makerspace’s 3D printers for their prototypes.",
+      "Laser Cutting": "Training students on the makerspace’s laser cutters for their prototypes.",
+    },
 
     size: "small",
     artifactType: "blueprint",
@@ -243,6 +288,11 @@ export const experiences: Experience[] = [
       "Added encryption to protect sensitive international student data",
     ],
     tags: ["Web Forms", "Third-party Integrations", "Encryption"],
+    toolNotes: {
+      "Web Forms": "Building the office’s e-forms.",
+      "Third-party Integrations": "Connecting those e-forms to the office’s main student software.",
+      Encryption: "Protecting sensitive international student data.",
+    },
 
     size: "medium",
     artifactType: "browser",
@@ -266,6 +316,11 @@ export const experiences: Experience[] = [
       "Partnered with companies across Nepali industries to hire trained women or send them outsourced work",
     ],
     tags: ["Excel", "Python", "E-forms"],
+    toolNotes: {
+      Excel: "Teaching spreadsheet skills to women preparing for their first jobs.",
+      Python: "Teaching programming basics.",
+      "E-forms": "Teaching data entry and e-form skills that employers were hiring for.",
+    },
 
     size: "medium",
     artifactType: "photo",

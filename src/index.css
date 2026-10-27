@@ -166,6 +166,19 @@ h2 { font-weight: 480; letter-spacing: -0.015em; font-size: 26px; line-height: 1
 .detail-facts dt { text-transform: uppercase; font-size: 11px; letter-spacing: 0.14em; font-weight: 580; color: var(--ink-3); }
 .detail-facts dd { margin-top: 6px; font-size: 14px; color: var(--ink); line-height: 1.6; }
 .detail-facts .tags { margin-top: 2px; }
+.tool-hint { display: block; margin-top: 4px; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 12px; color: var(--ink-3); }
+.tool-tag { position: relative; padding: 0 !important; background: none !important; }
+.tool-tag button { padding: 4px 12px; border: 1px solid transparent; border-radius: 999px; background: var(--blush); font: inherit; font-size: 12px; line-height: 1.5; color: var(--ink-2); cursor: pointer; transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease; }
+.tool-tag button::after { content: "+"; margin-left: 6px; color: var(--accent); }
+.tool-tag button:hover { border-color: var(--accent-soft); }
+.tool-tag button[aria-expanded="true"] { background: var(--rose); color: var(--on-rose); }
+.tool-tag button[aria-expanded="true"]::after { content: "−"; color: inherit; }
+.tool-note { position: absolute; z-index: 20; top: calc(100% + 10px); left: 0; width: max-content; max-width: min(260px, 80vw); padding: 14px 16px; background: var(--bg); border: 1px solid var(--line-strong); border-radius: 14px; box-shadow: 0 18px 40px -18px color-mix(in srgb, var(--ink) 35%, transparent); font-size: 13.5px; line-height: 1.6; color: var(--ink); animation: note-in 0.18s ease both; }
+.tool-note::before { content: ""; position: absolute; top: -6px; left: 18px; width: 10px; height: 10px; background: inherit; border-left: 1px solid var(--line-strong); border-top: 1px solid var(--line-strong); transform: rotate(45deg); }
+.tool-note.align-right { left: auto; right: 0; }
+.tool-note.align-right::before { left: auto; right: 18px; }
+.tool-note-label { margin-bottom: 4px; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.14em; font-weight: 600; color: var(--accent); }
+@keyframes note-in { from { opacity: 0; transform: translateY(-4px); } }
 .detail-body { display: grid; gap: 40px; max-width: 680px; }
 .detail-lead { font-family: var(--font-display); font-variation-settings: "SOFT" 100, "WONK" 0; font-size: 22px; line-height: 1.5; font-weight: 400; letter-spacing: -0.01em; }
 .detail-body h2.section-label { font-family: inherit; font-size: 11px; letter-spacing: 0.14em; font-weight: 580; line-height: 1.5; }
@@ -281,6 +294,6 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   html { scroll-behavior: auto; }
   .ticker-track { animation: none; }
   .page > * { animation: none; }
-  .project-status::before { animation: none; }
+  .project-status::before, .tool-note { animation: none; }
   *, *::before, *::after { transition: none !important; }
 }
