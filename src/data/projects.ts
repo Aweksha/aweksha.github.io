@@ -54,6 +54,10 @@ export const projects: Project[] = [
     experience: "janus",
     summary: "Built on my first day interning at Janus Henderson, to get comfortable with Angular, TypeScript, and the Node toolchain before diving into the team’s codebase.",
     tags: ["Angular", "TypeScript", "Node.js", "CSS"],
+    links: {
+      live: "https://aweksha.github.io/pink-calculator/",
+      code: "https://github.com/Aweksha/pink-calculator",
+    },
   },
   {
     id: "pong",
