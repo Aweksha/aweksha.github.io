@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { projectsIn, type Project, type ProjectCategory } from "../data/projects";
 import { experienceHref, experiences } from "../data/experience";
 import { pages } from "../data/pages";
+import ToolTags from "./ToolTags";
 
 const linkLabels = { live: "Live site", code: "Code", video: "Watch demo" } as const;
 
@@ -26,7 +27,8 @@ export function ProjectCard({ project, onExperiencePage = false }: { project: Pr
         <h2>{project.title}</h2>
         <p className="project-summary">{project.summary}</p>
         {project.highlights && <ul className="entry-bullets project-highlights">{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul>}
-        <ul className="tags" aria-label="Built with">{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+        {project.toolNotes && <p className="tool-hint project-tool-hint">Tap a tool to see how I used it</p>}
+        <ToolTags tags={project.tags} notes={project.toolNotes} />
         {onExperiencePage
           ? tab && <a className="project-origin" href={`#${tab.id}`}>See it in {tab.label} <span aria-hidden="true">→</span></a>
           : origin && <a className="project-origin" href={experienceHref(origin)}>From my time at {origin.organization} <span aria-hidden="true">→</span></a>}

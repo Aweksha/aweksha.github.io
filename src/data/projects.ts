@@ -20,6 +20,8 @@ export type Project = {
   /** Optional detail bullets for a bigger project. */
   highlights?: string[];
   tags: string[];
+  /** What each tag was used for, keyed by tag. Tags with a note open a small popup. */
+  toolNotes?: Record<string, string>;
   /** Shown above the title, e.g. "2025" or "CSE 3318 · Spring 2025". */
   meta?: string;
   /** Optional badge, e.g. "In development". */
@@ -52,6 +54,18 @@ export const projects: Project[] = [
       "Each stock page adds candlestick charts, fundamentals, and news headlines labeled for sentiment by Gemini",
     ],
     tags: ["React", "TypeScript", "Express", "PostgreSQL", "FastAPI", "Python", "scikit-learn", "XGBoost", "Gemini API", "Yahoo Finance"],
+    toolNotes: {
+      React: "The web frontend: the landing page, the Markets page, and the stock pages with their charts and forecasts.",
+      TypeScript: "Typing the frontend, including the shape of the data it gets back from the API, like the model report.",
+      Express: "The API between the frontend and the AI service, with routes for price history, quotes, predictions, news, fundamentals, and backtests.",
+      PostgreSQL: "The database that stores daily stock prices.",
+      FastAPI: "The AI service, which exposes predictions, backtests, fundamentals, and news as endpoints.",
+      Python: "Feature engineering, model training, and walk-forward evaluation.",
+      "scikit-learn": "The random forests behind the 5-day direction, 10-day signal, and price range models, plus the logistic and ridge models they were tested against.",
+      XGBoost: "The next-day return model, chosen for having the lowest error in walk-forward testing.",
+      "Gemini API": "Labeling news headlines as bullish, bearish, or neutral.",
+      "Yahoo Finance": "The source of daily prices, company fundamentals, and news headlines.",
+    },
     links: {
       code: "https://github.com/Aweksha/PREDIXA",
     },
