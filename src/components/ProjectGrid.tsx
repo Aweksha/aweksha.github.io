@@ -25,6 +25,7 @@ export function ProjectCard({ project, onExperiencePage = false }: { project: Pr
         )}
         <h2>{project.title}</h2>
         <p className="project-summary">{project.summary}</p>
+        {project.highlights && <ul className="entry-bullets project-highlights">{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul>}
         <ul className="tags" aria-label="Built with">{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
         {onExperiencePage
           ? tab && <a className="project-origin" href={`#${tab.id}`}>See it in {tab.label} <span aria-hidden="true">→</span></a>

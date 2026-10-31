@@ -208,6 +208,8 @@ h2 { font-weight: 480; letter-spacing: -0.015em; font-size: 26px; line-height: 1
 .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 24px; }
 .project-links a { padding: 9px 16px; font-size: 13px; }
 .project-card .tags { margin-top: 18px; }
+.project-highlights li { font-size: 14px; line-height: 1.65; }
+.project-card:only-child { grid-column: 1 / -1; max-width: 760px; }
 .project-origin { align-self: flex-start; margin-top: 18px; padding-bottom: 2px; border-bottom: 1px solid var(--accent-soft); font-size: 13px; color: var(--ink-2); transition: color 0.2s ease, border-color 0.2s ease; }
 .project-origin:hover { color: var(--ink); border-color: var(--ink); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

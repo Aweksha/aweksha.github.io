@@ -17,6 +17,8 @@ export type Project = {
   category: ProjectCategory;
   /** One or two sentences: what it is and what you did. */
   summary: string;
+  /** Optional detail bullets for a bigger project. */
+  highlights?: string[];
   tags: string[];
   /** Shown above the title, e.g. "2025" or "CSE 3318 · Spring 2025". */
   meta?: string;
@@ -37,6 +39,23 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "predixa",
+    title: "PREDIXA",
+    category: "projects",
+    meta: "2026 · Research project",
+    summary: "A full-stack stock research app that forecasts 20 large US stocks from a date about 30 days in the past, then grades every forecast against what actually happened.",
+    highlights: [
+      "Serves four models on 53 price, volume, and market features: next-day return (XGBoost), plus 5-day direction, a 10-day buy, hold, or sell signal, and a 10-day expected price range (random forests)",
+      "Models were chosen with walk-forward testing against simple baselines, then scored once on untouched data from Jul 2025 to Oct 2026",
+      "The honest result: next-day direction only matched the baseline (51.9% vs. 51.8%), but volatility forecasting clearly beat it (R² 0.45 vs. 0.004), and the app shows users this track record",
+      "Each stock page adds candlestick charts, fundamentals, and news headlines labeled for sentiment by Gemini",
+    ],
+    tags: ["React", "TypeScript", "Express", "PostgreSQL", "FastAPI", "Python", "scikit-learn", "XGBoost", "Gemini API", "Yahoo Finance"],
+    links: {
+      code: "https://github.com/Aweksha/PREDIXA",
+    },
+  },
   {
     id: "ai-literary-word-finder",
     title: "AI Literary Word Finder",
