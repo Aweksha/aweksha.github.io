@@ -89,6 +89,8 @@ h2 { font-weight: 480; letter-spacing: -0.015em; font-size: 26px; line-height: 1
 
 /* Intro */
 .intro { padding-bottom: 16px; }
+.intro .page-intro a { color: var(--ink); border-bottom: 1px solid var(--accent-soft); transition: border-color 0.2s ease; }
+.intro .page-intro a:hover { border-color: var(--ink); }
 .intro h1 { max-width: 15.5em; font-size: clamp(36px, 5vw, 60px); }
 .status { background: color-mix(in srgb, var(--bg) 70%, transparent); display: inline-flex; align-items: center; white-space: pre; margin-bottom: 30px; padding: 7px 14px 7px 12px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 13px; color: var(--ink-2); }
 .status-dot { flex-shrink: 0; width: 7px; height: 7px; margin-right: 10px; border-radius: 50%; background: var(--status); box-shadow: 0 0 0 4px color-mix(in srgb, var(--status) 18%, transparent); }

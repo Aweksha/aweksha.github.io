@@ -7,8 +7,12 @@ function Intro() {
     <>
       <section className="intro" aria-labelledby="intro-heading">
         <p className="status"><span className="status-dot" aria-hidden="true" />{profile.status}<span className="status-detail"> · {profile.statusDetail}</span></p>
-        <h1 id="intro-heading">Hi, I’m {profile.firstName}<span>.</span> I study computer science, teach, and <em>learn by building.</em></h1>
-        <p className="page-intro">Computer science student at UT Arlington. My experience spans web development, AI research, financial technology, and teaching.</p>
+        <h1 id="intro-heading">Hey! I’m {profile.firstName}<span>.</span> I’m a software engineer finishing my CS degree at <em>UTA.</em></h1>
+        <p className="page-intro">
+          I’m dependable and hardworking, and I work well on a team, whether I’m leading it or pitching in.
+          You can see what I worked on during my degree in <a href="#academic">Academic Work</a>, and read about my internship and other roles in the <a href="#experience">Experience Scrapbook</a>.
+          If you’d like to work together, <a href={`mailto:${profile.email}`}>send me an email</a>.
+        </p>
         <div className="intro-actions">
           <a className="button-primary" href="#experience">Explore my experience <span aria-hidden="true">→</span></a>
           <a className="button-secondary" href="#contact">Say hello</a>
