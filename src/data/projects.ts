@@ -99,6 +99,10 @@ export const projects: Project[] = [
     meta: "High school",
     summary: "A Pong game I built with Pygame back when it was brand new to me, to figure out how game loops, collisions, and keyboard input really work.",
     tags: ["Python", "Pygame"],
+    links: {
+      live: "https://aweksha.github.io/snek-pong/",
+      code: "https://github.com/Aweksha/snek-pong",
+    },
   },
 
   // Copy this block for each project and fill it in:
