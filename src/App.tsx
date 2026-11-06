@@ -6,6 +6,7 @@ import ExperienceDetail from "./components/ExperienceDetail";
 import ContactLinks from "./components/ContactLinks";
 import ContactPage from "./components/ContactPage";
 import ProjectGrid from "./components/ProjectGrid";
+import AcademicPage from "./components/AcademicPage";
 import { profile } from "./data/profile";
 import { findExperience } from "./data/experience";
 import { pageNumber, pages, type PageId } from "./data/pages";
@@ -24,9 +25,7 @@ const pageBodies: Record<PageId, ReactNode> = {
   projects: (
     <ProjectGrid category="projects" empty={<div className="empty-state"><span className="section-label">In the making</span><h2>Making room for the work.</h2><p>Project write-ups are on their way.</p></div>} />
   ),
-  academic: (
-    <ProjectGrid category="academic" empty={<div className="empty-state"><span className="section-label">On the syllabus</span><h2>Notes from the classroom.</h2><p>Class projects, papers, and research write-ups will live here.</p></div>} />
-  ),
+  academic: <AcademicPage />,
   fun: (
     <ProjectGrid category="fun" empty={<div className="empty-state"><span className="section-label">Room to play</span><h2>Little projects belong here, too.</h2><p>The first experiments will land here soon.</p></div>} />
   ),
