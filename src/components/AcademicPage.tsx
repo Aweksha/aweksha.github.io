@@ -27,11 +27,32 @@ function CourseDetails({ course }: { course: Course }) {
   );
 }
 
-/** Credentials, then coursework from most to least relevant, then any academic projects. */
+function CourseRows({ items }: { items: Course[] }) {
+  return (
+    <ul className="course-rows">
+      {items.map((course) => (
+        <li key={course.code}>
+          <details className="course-row">
+            <summary>
+              <span className="course-code">{course.code}</span>
+              <span className="course-title">{course.title}</span>
+              <span className="course-term">{course.term}{course.school && ` · ${course.school}`}</span>
+              <span className="course-chevron" aria-hidden="true" />
+            </summary>
+            <div className="course-row-body"><CourseDetails course={course} /></div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Credentials, then any class projects, then coursework from most to least relevant. */
 function AcademicPage() {
   const upper = coursesIn("upper");
   const current = upper.filter((c) => c.inProgress);
-  const completed = upper.filter((c) => !c.inProgress);
+  const completed = upper.filter((c) => !c.inProgress && !c.secondary);
+  const more = upper.filter((c) => !c.inProgress && c.secondary);
   const genEds = coursesIn("gened");
   const projects = projectsIn("academic");
 
@@ -59,6 +80,13 @@ function AcademicPage() {
         </div>
       </section>
 
+      {projects.length > 0 && (
+        <section className="course-section" aria-labelledby="academic-projects-heading">
+          <h2 id="academic-projects-heading" className="course-section-title">Featured class projects</h2>
+          <ul className="project-grid">{projects.map((project) => <ProjectCard key={project.id} project={project} />)}</ul>
+        </section>
+      )}
+
       <section className="course-section" aria-labelledby="core-heading">
         <h2 id="core-heading" className="course-section-title">Core coursework</h2>
         <ul className="core-courses">
@@ -78,28 +106,22 @@ function AcademicPage() {
         {[{ label: "Currently taking", items: current }, { label: "Completed", items: completed }].map(({ label, items }) => (
           <div className="course-group" key={label}>
             <p className="section-label">{label}</p>
-            <ul className="course-rows">
-              {items.map((course) => (
-                <li key={course.code}>
-                  <details className="course-row">
-                    <summary>
-                      <span className="course-code">{course.code}</span>
-                      <span className="course-title">{course.title}</span>
-                      <span className="course-term">{course.term}{course.school && ` · ${course.school}`}</span>
-                      <span className="course-chevron" aria-hidden="true" />
-                    </summary>
-                    <div className="course-row-body"><CourseDetails course={course} /></div>
-                  </details>
-                </li>
-              ))}
-            </ul>
+            <CourseRows items={items} />
           </div>
         ))}
+        <details className="gened course-more">
+          <summary>
+            <span>More upper-level coursework</span>
+            <span className="gened-count">{more.length} courses</span>
+            <span className="course-chevron" aria-hidden="true" />
+          </summary>
+          <CourseRows items={more} />
+        </details>
       </section>
 
       <section className="course-section" aria-labelledby="foundation-heading">
         <h2 id="foundation-heading" className="course-section-title">Foundations</h2>
-        <p className="course-section-note">Lower-level computer science, math, and physics.</p>
+        <p className="course-section-note">Lower-level computer science, math, and physics. Open a computing course to see what it covered.</p>
         <ul className="foundation-list">
           {coursesIn("foundation").map((course) => {
             const label = (
@@ -140,12 +162,6 @@ function AcademicPage() {
         </ul>
       </details>
 
-      {projects.length > 0 && (
-        <section className="course-section" aria-labelledby="academic-projects-heading">
-          <h2 id="academic-projects-heading" className="course-section-title">Class projects</h2>
-          <ul className="project-grid">{projects.map((project) => <ProjectCard key={project.id} project={project} />)}</ul>
-        </section>
-      )}
     </div>
   );
 }

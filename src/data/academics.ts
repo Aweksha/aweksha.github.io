@@ -20,6 +20,8 @@ export type Course = {
   /** Set for courses taken at CU Denver before transferring. */
   school?: "CU Denver";
   inProgress?: boolean;
+  /** Upper-level only: tuck this course under "more courses" instead of showing it up front. */
+  secondary?: boolean;
   topics?: string;
   highlight?: string;
   /** An internal link, e.g. to an experience page or a project tab. */
@@ -54,8 +56,7 @@ export const courses: Course[] = [
     term: "Fall 2024",
     tier: "core",
     topics: "Software engineering processes and techniques: functional analysis and design, configuration management, implementation strategies, and testing, through a team project.",
-    highlight: "Went on to TA this course the next semester, running the Git workflow for every student team.",
-    related: { label: "My TA role", href: "#experience/cse-3310-ta" },
+    related: { label: "I went on to TA this course the next semester", href: "#experience/cse-3310-ta" },
   },
   {
     code: "CSE 4334",
@@ -116,6 +117,7 @@ export const courses: Course[] = [
     title: "Programming Languages",
     term: "Spring 2026",
     tier: "upper",
+    secondary: true,
     topics: "How to specify a language’s syntax and semantics, and how procedural, functional, logic, and object-oriented paradigms compare.",
     highlight: "Wrote a stack-based Reverse Polish Notation evaluator in Python.",
   },
@@ -132,6 +134,7 @@ export const courses: Course[] = [
     title: "Computer Networks",
     term: "Spring 2024",
     tier: "upper",
+    secondary: true,
     school: "CU Denver",
     topics: "Internet protocols, network devices, network security, and performance.",
   },
@@ -140,6 +143,7 @@ export const courses: Course[] = [
     title: "Computer Architecture",
     term: "Spring 2024",
     tier: "upper",
+    secondary: true,
     school: "CU Denver",
     topics: "How assembly language maps to hardware: arithmetic units, datapath and control, pipelining, memory systems, and I/O.",
   },
@@ -148,6 +152,7 @@ export const courses: Course[] = [
     title: "Theoretical Concepts in CSE",
     term: "Spring 2025",
     tier: "upper",
+    secondary: true,
     topics: "Regular and context-free languages, finite and pushdown automata, Turing machines, computability, and NP-completeness.",
   },
   {
@@ -155,6 +160,7 @@ export const courses: Course[] = [
     title: "Linear Algebra for CSE",
     term: "Spring 2025",
     tier: "upper",
+    secondary: true,
     topics: "Systems of equations, matrix algebra, determinants, vector spaces, orthogonality, and least squares, applied to computer science.",
   },
   {
@@ -162,6 +168,7 @@ export const courses: Course[] = [
     title: "Engineering Probability",
     term: "Spring 2025",
     tier: "upper",
+    secondary: true,
     topics: "Probability, random variables, and distributions for engineering problems.",
   },
   {
@@ -169,6 +176,7 @@ export const courses: Course[] = [
     title: "Professional Practices",
     term: "Fall 2025",
     tier: "upper",
+    secondary: true,
     topics: "Computing ethics and social responsibility, entrepreneurship and intellectual property, and a written and oral communication project.",
   },
   {
@@ -176,6 +184,7 @@ export const courses: Course[] = [
     title: "Supervised Engineering Work Experience",
     term: "Summer 2025",
     tier: "upper",
+    secondary: true,
     topics: "Academic credit for my Fixed Income Technology internship.",
     related: { label: "The internship", href: "#experience/janus-henderson" },
   },
