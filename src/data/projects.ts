@@ -71,6 +71,31 @@ export const projects: Project[] = [
     },
   },
   {
+    id: "toxic-language-detector",
+    title: "Toxic Language Detector",
+    category: "fun",
+    meta: "Nov 2026",
+    summary: "Paste any message and an LLM decides whether it’s a compliment, a spicy compliment, a backhanded one, neutral, or plain toxic.",
+    highlights: [
+      "Rates how harmful a message is and flags categories like insult, harassment, or threat",
+      "Translates backhanded compliments into what they really mean, and suggests a kinder way to say toxic messages",
+      "Checked against 13 test messages, each run twice to measure accuracy and consistency",
+    ],
+    tags: ["Python", "FastAPI", "Groq", "Prompt Design", "JavaScript", "Render"],
+    toolNotes: {
+      Python: "The classifier logic: building the prompt, calling the model, and checking its answer so only valid labels, severities, and categories get through.",
+      FastAPI: "The API behind the page, with an input length limit and a per-visitor rate limit so the free model quota can’t be used up.",
+      Groq: "Runs the open-weight gpt-oss-20b model at temperature 0, so the same message gets the same verdict.",
+      "Prompt Design": "A rubric for five tones and four harm levels, with examples of backhanded compliments and a rule to treat pasted text as data, never as instructions.",
+      JavaScript: "The page itself: sends the message, shows the verdict, and lets you copy the suggested rewrite.",
+      Render: "Hosts the API, with CORS set so only my site can call it from a browser.",
+    },
+    links: {
+      live: "https://aweksha.github.io/toxic-language-agent/",
+      code: "https://github.com/Aweksha/toxic-language-agent",
+    },
+  },
+  {
     id: "ai-literary-word-finder",
     title: "AI Literary Word Finder",
     category: "fun",
