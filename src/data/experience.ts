@@ -251,7 +251,7 @@ export const experiences: Experience[] = [
     datesVerified: true,
 
     shortLabel: "Design + Makerspace",
-    summary: "Mentored engineering teams from problem definition to working prototype.",
+    summary: "TA for ENGR 1200, Fundamentals of Engineering Design Innovation, mentoring engineering teams from problem definition to working prototype.",
     bullets: [
       "Formed project teams using personality assessments so students landed in groups that worked well together",
       "Taught the 4 Ds of engineering design and supported teams through each stage",

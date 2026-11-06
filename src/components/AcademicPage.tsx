@@ -101,13 +101,25 @@ function AcademicPage() {
         <h2 id="foundation-heading" className="course-section-title">Foundations</h2>
         <p className="course-section-note">Lower-level computer science, math, and physics.</p>
         <ul className="foundation-list">
-          {coursesIn("foundation").map((course) => (
-            <li key={course.code}>
-              <span className="course-code">{course.code}</span>
-              <span className="course-title">{course.title}</span>
-              <span className="course-term">{course.term}{course.school && ` · ${course.school}`}</span>
-            </li>
-          ))}
+          {coursesIn("foundation").map((course) => {
+            const label = (
+              <>
+                <span className="course-code">{course.code}</span>
+                <span className="course-title">{course.title}</span>
+                <span className="course-term">{course.term}{course.school && ` · ${course.school}`}</span>
+              </>
+            );
+            return (
+              <li key={course.code}>
+                {course.topics ? (
+                  <details className="foundation-item">
+                    <summary>{label}<span className="course-chevron" aria-hidden="true" /></summary>
+                    <div className="foundation-body"><CourseDetails course={course} /></div>
+                  </details>
+                ) : <div className="foundation-item">{label}</div>}
+              </li>
+            );
+          })}
         </ul>
       </section>
 

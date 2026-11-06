@@ -7,7 +7,7 @@
  *   "upper"      → expandable rows
  *   "foundation" → the compact list
  *   "gened"      → the "General education" dropdown
- * `topics` describes the course; `highlight` is something I actually did in it.
+ * `topics` is condensed from the official UTA and CU Denver catalogs; `highlight` is something I actually did in the course.
  */
 
 export type CourseTier = "core" | "upper" | "foundation" | "gened";
@@ -46,14 +46,14 @@ export const courses: Course[] = [
     title: "Software Project Management",
     term: "Fall 2025",
     tier: "core",
-    topics: "Planning and running software projects: estimation, scheduling, risk management, and agile and plan-driven processes.",
+    topics: "Effort estimation and costing, project planning and scheduling, option analysis, software quality assurance, and formal technical reviews.",
   },
   {
     code: "CSE 3310",
     title: "Fundamentals of Software Engineering",
     term: "Fall 2024",
     tier: "core",
-    topics: "Requirements, design, modeling, testing, and version control, applied in a semester-long team project.",
+    topics: "Software engineering processes and techniques: functional analysis and design, configuration management, implementation strategies, and testing, through a team project.",
     highlight: "Went on to TA this course the next semester, running the Git workflow for every student team.",
     related: { label: "My TA role", href: "#experience/cse-3310-ta" },
   },
@@ -62,7 +62,7 @@ export const courses: Course[] = [
     title: "Data Mining",
     term: "Spring 2026",
     tier: "core",
-    topics: "Finding patterns in data: regression, classification, clustering, and judging how well a model holds up.",
+    topics: "Discovering patterns in large data: preprocessing, data warehousing and OLAP, association rule mining, classification and prediction, clustering, and web and text mining.",
     highlight: "Built multiple regression models in R, checked their assumptions with residual plots and Cook’s distance, removed multicollinearity using VIF, and compared models with ANOVA.",
   },
   {
@@ -70,7 +70,7 @@ export const courses: Course[] = [
     title: "Fundamentals of Machine Learning",
     term: "Fall 2025",
     tier: "core",
-    topics: "How models learn from data: regression, classification, neural networks, overfitting, and evaluation.",
+    topics: "Naive Bayes, linear regression and classifiers, neural networks and backpropagation, kernel methods, decision trees, feature selection, clustering, and reinforcement learning.",
     related: { label: "A related project: PREDIXA", href: "#projects" },
   },
 
@@ -80,14 +80,14 @@ export const courses: Course[] = [
     title: "Artificial Intelligence",
     term: "Fall 2025",
     tier: "upper",
-    topics: "Search, logic, probabilistic reasoning, and the foundations of intelligent agents.",
+    topics: "Heuristic search, deduction, learning, knowledge representation, and reasoning under uncertainty, with applications like intelligent agents, planning, and natural language.",
   },
   {
     code: "CSE 4321",
     title: "Software Testing & Maintenance",
     term: "Spring 2026",
     tier: "upper",
-    topics: "Test design, control flow graphs, path coverage, debugging, and maintaining existing code.",
+    topics: "Software quality assurance, formal reviews, verification and validation, testing techniques, regression testing, and the types of software maintenance.",
     highlight: "Found and fixed the faults in a Java tokenizer, then validated the fixes with control flow graphs, path testing, and a JUnit test suite.",
   },
   {
@@ -95,28 +95,28 @@ export const courses: Course[] = [
     title: "Computer System Design Project I & II",
     term: "Fall 2025 – Spring 2026",
     tier: "upper",
-    topics: "The two-semester senior capstone: designing, building, and delivering a system with a team.",
+    topics: "A two-semester, industry-style capstone with a multidisciplinary team: requirements, planning, and design, then implementation, testing, deployment, and a final demo.",
   },
   {
     code: "CSE 3330",
     title: "Database Systems & File Structures",
     term: "Fall 2024",
     tier: "upper",
-    topics: "Relational modeling, SQL, normalization, indexing, and how data is stored on disk.",
+    topics: "The relational model and algebra, SQL, entity-relationship modeling, normalization, and file structures like indexing, hashing, and B+ trees.",
   },
   {
     code: "CSE 3320",
     title: "Operating Systems",
     term: "Spring 2025",
     tier: "upper",
-    topics: "Processes, threads, scheduling, memory management, and file systems.",
+    topics: "Process synchronization, scheduling, memory management, file systems, protection, and deadlocks, plus loaders, linkers, and assemblers.",
   },
   {
     code: "CSE 3302",
     title: "Programming Languages",
     term: "Spring 2026",
     tier: "upper",
-    topics: "How languages are designed and run: syntax, semantics, and programming paradigms.",
+    topics: "How to specify a language’s syntax and semantics, and how procedural, functional, logic, and object-oriented paradigms compare.",
     highlight: "Wrote a stack-based Reverse Polish Notation evaluator in Python.",
   },
   {
@@ -125,7 +125,7 @@ export const courses: Course[] = [
     term: "Spring 2024",
     tier: "upper",
     school: "CU Denver",
-    topics: "Designing and analyzing algorithms: sorting, graphs, dynamic programming, and complexity.",
+    topics: "Designing algorithms and proving them correct, asymptotic analysis, hash tables, heaps, search trees, and graph algorithms.",
   },
   {
     code: "CSCI 3761",
@@ -133,7 +133,7 @@ export const courses: Course[] = [
     term: "Spring 2024",
     tier: "upper",
     school: "CU Denver",
-    topics: "How the internet works, layer by layer: protocols, routing, and TCP/IP.",
+    topics: "Internet protocols, network devices, network security, and performance.",
   },
   {
     code: "CSCI 4591",
@@ -141,21 +141,21 @@ export const courses: Course[] = [
     term: "Spring 2024",
     tier: "upper",
     school: "CU Denver",
-    topics: "How processors work: instruction sets, pipelining, and the memory hierarchy.",
+    topics: "How assembly language maps to hardware: arithmetic units, datapath and control, pipelining, memory systems, and I/O.",
   },
   {
     code: "CSE 3315",
     title: "Theoretical Concepts in CSE",
     term: "Spring 2025",
     tier: "upper",
-    topics: "Automata, formal languages, and the limits of what can be computed.",
+    topics: "Regular and context-free languages, finite and pushdown automata, Turing machines, computability, and NP-completeness.",
   },
   {
     code: "CSE 3380",
     title: "Linear Algebra for CSE",
     term: "Spring 2025",
     tier: "upper",
-    topics: "Vectors, matrices, and linear transformations, the math underneath graphics and machine learning.",
+    topics: "Systems of equations, matrix algebra, determinants, vector spaces, orthogonality, and least squares, applied to computer science.",
   },
   {
     code: "IE 3301",
@@ -169,7 +169,7 @@ export const courses: Course[] = [
     title: "Professional Practices",
     term: "Fall 2025",
     tier: "upper",
-    topics: "Ethics, professional responsibility, and communication in computing.",
+    topics: "Computing ethics and social responsibility, entrepreneurship and intellectual property, and a written and oral communication project.",
   },
   {
     code: "ENGR 3100",
@@ -185,7 +185,7 @@ export const courses: Course[] = [
     term: "Fall 2026",
     tier: "upper",
     inProgress: true,
-    topics: "Building and programming robots that sense their surroundings, plan, and act on their own.",
+    topics: "Kinematics, dynamics, control, and sensors, with projects building and programming both simulated and real robots.",
   },
   {
     code: "CSE 4381",
@@ -193,17 +193,27 @@ export const courses: Course[] = [
     term: "Fall 2026",
     tier: "upper",
     inProgress: true,
-    topics: "Advanced topics in protecting systems: attacks and defenses, applied cryptography, and secure system design.",
+    topics: "Symmetric and public key cryptography, cryptographic protocols, malware, network attacks and defenses, data security, privacy, and wireless security.",
   },
 
   // Foundations
-  { code: "CSCI 2421", title: "Data Structures & Program Design", term: "Fall 2023", tier: "foundation", school: "CU Denver" },
-  { code: "CSCI 2511", title: "Discrete Structures", term: "Fall 2023", tier: "foundation", school: "CU Denver" },
-  { code: "CSCI 2312", title: "Object-Oriented Programming", term: "Spring 2023", tier: "foundation", school: "CU Denver" },
-  { code: "CSCI 2525", title: "Assembly Language & Computer Organization", term: "Fall 2023", tier: "foundation", school: "CU Denver" },
-  { code: "CSCI 1510", title: "Logic Design", term: "Spring 2023", tier: "foundation", school: "CU Denver" },
-  { code: "CSCI 1410", title: "Fundamentals of Computing (with lab)", term: "Fall 2022", tier: "foundation", school: "CU Denver" },
-  { code: "CSE 1106", title: "Introduction to Computer Science & Engineering", term: "Fall 2024", tier: "foundation" },
+  { code: "CSCI 2421", title: "Data Structures & Program Design", term: "Fall 2023", tier: "foundation", school: "CU Denver", topics: "Data structures, abstract data types, sorting, searching, and recursion." },
+  { code: "CSCI 2511", title: "Discrete Structures", term: "Fall 2023", tier: "foundation", school: "CU Denver", topics: "Logic, sets, induction, combinatorics, discrete probability, relations, and graphs, applied to algorithm analysis." },
+  { code: "CSCI 2312", title: "Object-Oriented Programming", term: "Spring 2023", tier: "foundation", school: "CU Denver", topics: "Classes, inheritance, polymorphism, exception handling, templates, and the Standard Template Library." },
+  { code: "CSCI 2525", title: "Assembly Language & Computer Organization", term: "Fall 2023", tier: "foundation", school: "CU Denver", topics: "Assembly language programming and how programs run at the hardware level, including their interface to the operating system." },
+  { code: "CSCI 1510", title: "Logic Design", term: "Spring 2023", tier: "foundation", school: "CU Denver", topics: "Combinational and sequential logic circuits, Boolean algebra and minimization, and state machines." },
+  { code: "CSCI 1410", title: "Fundamentals of Computing (with lab)", term: "Fall 2022", tier: "foundation", school: "CU Denver", topics: "The elements of a programming language and basic techniques for solving problems with a computer." },
+  {
+    code: "ENGR 1200",
+    title: "Fundamentals of Engineering Design Innovation",
+    term: "Fall 2022",
+    tier: "foundation",
+    school: "CU Denver",
+    topics: "Engineering design across scales and disciplines: design principles, processes, methods, modes of thinking, and its social and cultural side.",
+    highlight: "Went on to TA this course for two semesters, mentoring student teams from problem definition to working prototype.",
+    related: { label: "My TA role", href: "#experience/engineering-design-ta" },
+  },
+  { code: "CSE 1106", title: "Introduction to Computer Science & Engineering", term: "Fall 2024", tier: "foundation", topics: "Hands-on labs with circuits, digital logic, embedded controllers, networking, software design, and Linux." },
   { code: "MATH 2326", title: "Calculus III", term: "Spring 2026", tier: "foundation" },
   { code: "MATH 2411", title: "Calculus II", term: "Spring 2024", tier: "foundation", school: "CU Denver" },
   { code: "MATH 1401", title: "Calculus I", term: "Spring 2023", tier: "foundation", school: "CU Denver" },
@@ -221,7 +231,6 @@ export const courses: Course[] = [
   { code: "HIST 1331", title: "American Technology & Science I", term: "Fall 2026", tier: "gened", inProgress: true },
   { code: "DIVR 2315", title: "Introduction to LGBTQ+ Studies", term: "Fall 2024", tier: "gened" },
   { code: "ART 1301", title: "Art Appreciation", term: "Spring 2026", tier: "gened" },
-  { code: "ENGR 1200", title: "Fundamentals of Engineering Design Innovation", term: "Fall 2022", tier: "gened", school: "CU Denver" },
   { code: "ENGR 1101", title: "Engineering for Transfers", term: "Fall 2024", tier: "gened" },
   { code: "MATH 1130", title: "Precalculus", term: "Fall 2022", tier: "gened", school: "CU Denver" },
 ];
