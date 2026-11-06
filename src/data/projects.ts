@@ -34,6 +34,8 @@ export type Project = {
     /** A demo video (YouTube, Loom, Google Drive) for projects that can't run online. */
     video?: string;
   };
+  /** Set when a project from another tab was built for a class; it then also shows on Academic Work. */
+  course?: string;
   /** The id of the role in experience.ts this came out of, if any. Links both ways. */
   experience?: string;
   /** Put the image in /public/projects/ and use "/projects/name.png". */
@@ -45,15 +47,17 @@ export const projects: Project[] = [
     id: "predixa",
     title: "PREDIXA",
     category: "projects",
-    meta: "2026 · Research project",
-    summary: "A full-stack stock research app that forecasts 20 large US stocks from a date about 30 days in the past, then grades every forecast against what actually happened.",
+    course: "CSE 4316 / 4317",
+    meta: "Senior Design · 2025 – 2026",
+    summary: "Our two-semester senior design capstone: a full-stack stock analytics platform that forecasts 20 large US stocks from a date about 30 days in the past, then grades every forecast against what actually happened.",
     highlights: [
-      "Serves four models on 53 price, volume, and market features: next-day return (XGBoost), plus 5-day direction, a 10-day buy, hold, or sell signal, and a 10-day expected price range (random forests)",
-      "Models were chosen with walk-forward testing against simple baselines, then scored once on untouched data from Jul 2025 to Oct 2026",
+      "Built the web app end to end: a React and TypeScript frontend connected to an Express API and Python machine learning services",
+      "Built the interactive stock charts, market data views, and prediction screens, plus caching and fallbacks so market data keeps loading when a source fails",
+      "Worked on model integration and evaluation: four models on 53 features, chosen by walk-forward testing and scored on untouched data from Jul 2025 to Oct 2026",
       "The honest result: next-day direction only matched the baseline (51.9% vs. 51.8%), but volatility forecasting clearly beat it (R² 0.45 vs. 0.004), and the app shows users this track record",
-      "Each stock page adds candlestick charts, fundamentals, and news headlines labeled for sentiment by Gemini",
+      "Set up the team’s CI/CD pipeline in Azure DevOps on my own, and demoed the platform at Senior Design Demo Day in April 2026",
     ],
-    tags: ["React", "TypeScript", "Express", "PostgreSQL", "FastAPI", "Python", "scikit-learn", "XGBoost", "Gemini API", "Yahoo Finance"],
+    tags: ["React", "TypeScript", "Express", "PostgreSQL", "FastAPI", "Python", "scikit-learn", "XGBoost", "Gemini API", "Yahoo Finance", "Azure DevOps"],
     toolNotes: {
       React: "The web frontend: the landing page, the Markets page, and the stock pages with their charts and forecasts.",
       TypeScript: "Typing the frontend, including the shape of the data it gets back from the API, like the model report.",
@@ -65,9 +69,86 @@ export const projects: Project[] = [
       XGBoost: "The next-day return model, chosen for having the lowest error in walk-forward testing.",
       "Gemini API": "Labeling news headlines as bullish, bearish, or neutral.",
       "Yahoo Finance": "The source of daily prices, company fundamentals, and news headlines.",
+      "Azure DevOps": "The team’s CI/CD pipeline, which I set up on my own.",
     },
     links: {
       code: "https://github.com/Aweksha/PREDIXA",
+    },
+  },
+  {
+    id: "autonomous-robot-navigation",
+    title: "Autonomous Robot Navigation",
+    category: "academic",
+    meta: "CSE 4360 · Fall 2026",
+    summary: "Programmed a LEGO EV3 robot to find and drive its own path through a mapped environment.",
+    highlights: [
+      "Planned routes with A* pathfinding, keeping a safe clearance around obstacles",
+      "Tracked the robot’s position with wheel-encoder odometry, and calibrated its movement so it hit target coordinates",
+      "Measured navigation accuracy through physical testing and a final demonstration",
+    ],
+    tags: ["Python", "Pybricks", "LEGO EV3", "A* Pathfinding", "Odometry", "SSH"],
+    toolNotes: {
+      Python: "All of the robot’s logic: path planning, navigation, and movement.",
+      Pybricks: "The Python framework for controlling the EV3’s motors and reading its sensors.",
+      "LEGO EV3": "The robot itself, built and programmed for the course.",
+      "A* Pathfinding": "Finding the shortest route through the map that stays clear of obstacles.",
+      Odometry: "Estimating where the robot is from how far each wheel has turned.",
+      SSH: "Connecting to the robot to load and run code.",
+    },
+  },
+  {
+    id: "printtokens-testing",
+    title: "Software Testing & Maintenance",
+    category: "academic",
+    meta: "CSE 4321 · Spring 2026",
+    summary: "Found and fixed the faults in a Java tokenizer program, then proved the fixes with systematic testing.",
+    highlights: [
+      "Modeled each method with control flow graphs and designed test cases to meet edge-coverage criteria",
+      "Wrote a JUnit test suite to check the program’s behavior and expose its faults",
+      "Documented each fault and its correction in a written report",
+    ],
+    tags: ["Java", "JUnit", "Control Flow Graphs"],
+    toolNotes: {
+      Java: "The tokenizer program, both the faulty original and my corrected version.",
+      JUnit: "The test suite that checks the corrected program’s behavior.",
+      "Control Flow Graphs": "Mapping every path through each method to design tests that cover all of its edges.",
+    },
+  },
+  {
+    id: "restaurant-data-analysis",
+    title: "Restaurant Data Analysis",
+    category: "academic",
+    meta: "CSE 4334 · Spring 2026",
+    summary: "Explored a dataset of 9,343 restaurants across 3,361 US cities to find patterns in what restaurants have in common.",
+    highlights: [
+      "Cleaned and preprocessed the data, and engineered features for modeling",
+      "Grouped similar restaurants with K-means clustering",
+      "Built predictive models with random forests",
+    ],
+    tags: ["Python", "Pandas", "scikit-learn", "K-means", "Random Forest"],
+    toolNotes: {
+      Python: "The whole analysis, from loading the data to modeling.",
+      Pandas: "Cleaning, preprocessing, and feature engineering.",
+      "scikit-learn": "The clustering and predictive models.",
+      "K-means": "Grouping restaurants with similar characteristics.",
+      "Random Forest": "The predictive models.",
+    },
+  },
+  {
+    id: "client-server-networking",
+    title: "Client-Server Network Programming",
+    category: "academic",
+    meta: "CSCI 3761 · CU Denver · Spring 2024",
+    summary: "Wrote client and server programs in C to learn how networked applications talk to each other.",
+    highlights: [
+      "Used socket programming to build both sides of a client-server application",
+      "Applied concepts from Kurose and Ross’s Computer Networking: A Top-Down Approach",
+    ],
+    tags: ["C", "Sockets", "Client-Server Architecture"],
+    toolNotes: {
+      C: "Both the client and the server programs.",
+      Sockets: "The connection the client and server use to send data to each other.",
+      "Client-Server Architecture": "How the two programs divide the work: the server listens, and the client connects and makes requests.",
     },
   },
   {

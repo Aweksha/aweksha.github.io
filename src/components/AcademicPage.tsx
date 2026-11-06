@@ -1,5 +1,5 @@
 import { coursesIn, credentials, type Course } from "../data/academics";
-import { projectsIn } from "../data/projects";
+import { projects as allProjects } from "../data/projects";
 import { ProjectCard } from "./ProjectGrid";
 
 function CourseMeta({ course }: { course: Course }) {
@@ -54,7 +54,7 @@ function AcademicPage() {
   const completed = upper.filter((c) => !c.inProgress && !c.secondary);
   const more = upper.filter((c) => !c.inProgress && c.secondary);
   const genEds = coursesIn("gened");
-  const projects = projectsIn("academic");
+  const projects = allProjects.filter((p) => p.category === "academic" || p.course);
 
   return (
     <div className="academic">

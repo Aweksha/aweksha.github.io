@@ -48,14 +48,14 @@ export const courses: Course[] = [
     title: "Software Project Management",
     term: "Fall 2025",
     tier: "core",
-    topics: "Effort estimation and costing, project planning and scheduling, option analysis, software quality assurance, and formal technical reviews.",
+    topics: "Project planning and scheduling, effort estimation, risk management, team coordination, and managing deliverables across the development lifecycle.",
   },
   {
     code: "CSE 3310",
     title: "Fundamentals of Software Engineering",
     term: "Fall 2024",
     tier: "core",
-    topics: "Software engineering processes and techniques: functional analysis and design, configuration management, implementation strategies, and testing, through a team project.",
+    topics: "Software development methodologies, requirements analysis, system design, collaborative development, version control, testing, and maintaining software across its lifecycle.",
     related: { label: "I went on to TA this course the next semester", href: "#experience/cse-3310-ta" },
   },
   {
@@ -72,7 +72,8 @@ export const courses: Course[] = [
     term: "Fall 2025",
     tier: "core",
     topics: "Naive Bayes, linear regression and classifiers, neural networks and backpropagation, kernel methods, decision trees, feature selection, clustering, and reinforcement learning.",
-    related: { label: "A related project: PREDIXA", href: "#projects" },
+    related: { label: "See PREDIXA", href: "#projects" },
+    highlight: "Applied supervised learning, feature engineering, and model evaluation in PREDIXA, comparing its predictions against actual market outcomes.",
   },
 
   // Upper level
@@ -97,6 +98,8 @@ export const courses: Course[] = [
     term: "Fall 2025 – Spring 2026",
     tier: "upper",
     topics: "A two-semester, industry-style capstone with a multidisciplinary team: requirements, planning, and design, then implementation, testing, deployment, and a final demo.",
+    highlight: "Built PREDIXA with my team, a full-stack stock analytics platform. I developed the web app, integrated the machine learning services, and set up CI/CD in Azure DevOps, then demoed it at Senior Design Demo Day in April 2026.",
+    related: { label: "See PREDIXA", href: "#projects" },
   },
   {
     code: "CSE 3330",
@@ -134,9 +137,9 @@ export const courses: Course[] = [
     title: "Computer Networks",
     term: "Spring 2024",
     tier: "upper",
-    secondary: true,
     school: "CU Denver",
     topics: "Internet protocols, network devices, network security, and performance.",
+    highlight: "Wrote client and server programs in C using sockets, applying Kurose and Ross’s Computer Networking: A Top-Down Approach.",
   },
   {
     code: "CSCI 4591",
@@ -195,6 +198,7 @@ export const courses: Course[] = [
     tier: "upper",
     inProgress: true,
     topics: "Kinematics, dynamics, control, and sensors, with projects building and programming both simulated and real robots.",
+    highlight: "Programmed a LEGO EV3 robot to navigate a mapped environment with A* pathfinding and wheel-encoder odometry.",
   },
   {
     code: "CSE 4381",
