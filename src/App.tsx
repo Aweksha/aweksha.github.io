@@ -10,15 +10,9 @@ import AcademicPage from "./components/AcademicPage";
 import { profile } from "./data/profile";
 import { findExperience } from "./data/experience";
 import { pageNumber, pages, type PageId } from "./data/pages";
+import { parseHash } from "./routes";
 
-type Route = "home" | PageId;
-
-/** "#experience/janus-henderson" → page "experience", detail "janus-henderson". */
-function currentRoute(): { route: Route; detail?: string } {
-  const [id, detail] = window.location.hash.slice(1).split("/");
-  const page = pages.find((p) => p.id === id);
-  return page ? { route: page.id, detail } : { route: "home" };
-}
+const currentRoute = () => parseHash(window.location.hash);
 
 const pageBodies: Record<PageId, ReactNode> = {
   experience: <ExperienceScrapbook />,

@@ -1,4 +1,5 @@
-# Builds the site and publishes it to GitHub Pages on every push to main.
+# Checks, builds, and publishes the site to GitHub Pages on every push to main.
+# A failing lint, type check, or test stops the deploy, so the live site stays as it was.
 name: Deploy to GitHub Pages
 
 on:
@@ -25,6 +26,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

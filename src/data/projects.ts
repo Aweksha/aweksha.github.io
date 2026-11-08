@@ -52,7 +52,8 @@ export const projects: Project[] = [
     summary: "Our two-semester senior design capstone: a full-stack stock analytics platform that forecasts 20 large US stocks from a date about 30 days in the past, then grades every forecast against what actually happened.",
     highlights: [
       "Built the web app end to end: a React and TypeScript frontend connected to an Express API and Python machine learning services",
-      "Built the interactive stock charts, market data views, and prediction screens, plus caching and fallbacks so market data keeps loading when a source fails",
+      "Built the interactive stock charts, market data views, and prediction screens",
+      "Kept market data loading when a source fails: price history reads from Postgres, refreshes from Yahoo Finance once it’s a day old, and falls back to Yahoo directly if the database is down. Quotes are cached for 60 seconds to stay under API rate limits, and every response reports which source served it",
       "Worked on model integration and evaluation: four models on 53 features, chosen by walk-forward testing and scored on untouched data from Jul 2025 to Oct 2026",
       "The honest result: next-day direction only matched the baseline (51.9% vs. 51.8%), but volatility forecasting clearly beat it (R² 0.45 vs. 0.004), and the app shows users this track record",
       "Set up the team’s CI/CD pipeline in Azure DevOps on my own, and demoed the platform at Senior Design Demo Day in April 2026",
@@ -73,6 +74,39 @@ export const projects: Project[] = [
     },
     links: {
       code: "https://github.com/Aweksha/PREDIXA",
+    },
+  },
+  {
+    id: "bondmind",
+    title: "bondMIND",
+    category: "projects",
+    meta: "Personal project · 2026",
+    summary: "A fixed-income analytics app I built on my own after my internship at Janus Henderson and PREDIXA: explore bonds, compare the real U.S. Treasury yield curve across dates, and watch how a bond’s price reacts when its yield moves.",
+    highlights: [
+      "Three tools: a Bond Explorer with filters and per-bond risk figures, a yield curve comparison over real Treasury data since 2019, and a price simulator that shows where duration and convexity estimates miss",
+      "Wrote the pricing engine from scratch: cash flows, accrued interest, clean and dirty price, yield to maturity, duration, convexity, and DV01. It turns the Treasury par curve into a zero curve and prices each bond off it with a Z-spread",
+      "Checked the engine against QuantLib, an independent industry library, on hard cases like short first coupons, negative yields, and bonds about to mature",
+      "Kept the data honest: the Treasury curve is real, the bonds are synthetic and labeled as synthetic everywhere, and the loader quarantines bad records. Five invalid rows are planted on purpose so that check never goes untested",
+      "GitHub Pages can’t run an API, so the same engine computes every figure at build time and a test checks the exported data matches the live API",
+      "Every push runs lint, a determinism check on the generated data, a migration drift check, tests on both SQLite and PostgreSQL, and Playwright browser tests before the site publishes",
+    ],
+    tags: ["Angular", "TypeScript", "ECharts", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "QuantLib", "Playwright", "Docker", "GitHub Actions"],
+    toolNotes: {
+      Angular: "The frontend, built with standalone components and signals. Each page keeps its filters and settings in the URL, so any view can be bookmarked or shared.",
+      TypeScript: "Typing the frontend and the API data it reads, and running the filtering and sorting in the browser with the same rules as the API.",
+      ECharts: "The yield curve overlays, steepness sparklines, price history, and the price–yield curve in the simulator.",
+      Python: "The bond math, curve bootstrapping, scenario shocks, and the synthetic data generator.",
+      FastAPI: "The API for bonds, curves, analytics, price–yield points, and rate-shock scenarios, with a consistent error format and a request ID on every response.",
+      PostgreSQL: "Stores the curve, bonds, quotes, and ratings, with every observation traced back to the load that brought it in.",
+      SQLAlchemy: "The database models, with Alembic migrations that CI checks against the models.",
+      QuantLib: "Used only in tests, as an independent reference to check my prices, yields, and risk figures.",
+      Playwright: "Browser tests for filtering, sorting, the curve comparison, the simulator, and error handling, run against the site exactly as GitHub Pages serves it.",
+      Docker: "Runs the whole app, including the database, API, and web app, with one command.",
+      "GitHub Actions": "Runs the full test suite on every push and publishes the site to GitHub Pages.",
+    },
+    links: {
+      live: "https://aweksha.github.io/bondMIND/",
+      code: "https://github.com/Aweksha/bondMIND",
     },
   },
   {
@@ -166,7 +200,7 @@ export const projects: Project[] = [
     toolNotes: {
       Python: "The classifier logic: building the prompt, calling the model, and checking its answer so only valid labels, severities, and categories get through.",
       FastAPI: "The API behind the page, with an input length limit and a per-visitor rate limit so the free model quota can’t be used up.",
-      Groq: "Runs the open-weight gpt-oss-20b model at temperature 0, so the same message gets the same verdict.",
+      Groq: "Runs the open-weight gpt-oss-20b model at temperature 0, to keep verdicts as consistent as possible from one run to the next.",
       "Prompt Design": "A rubric for five tones and four harm levels, with examples of backhanded compliments and a rule to treat pasted text as data, never as instructions.",
       JavaScript: "The page itself: sends the message, shows the verdict, and lets you copy the suggested rewrite.",
       Render: "Hosts the API, with CORS set so only my site can call it from a browser.",
