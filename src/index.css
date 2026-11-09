@@ -113,6 +113,10 @@ h2 { font-weight: 480; letter-spacing: -0.015em; font-size: 26px; line-height: 1
 .page-index-number { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .page-index-title { font-size: 24px; font-weight: 460; letter-spacing: -0.015em; }
 .page-index-intro { font-size: 15px; line-height: 1.6; color: var(--ink-3); }
+.page-index-text { display: flex; flex-direction: column; gap: 10px; }
+.page-index-preview { display: flex; flex-wrap: wrap; gap: 6px; }
+.page-index-preview span { white-space: nowrap; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line-strong); font-size: 11.5px; font-weight: 520; color: var(--ink-2); transition: border-color 0.25s ease, background-color 0.25s ease; }
+.page-index a:hover .page-index-preview span { border-color: var(--accent-soft); background: var(--blush); }
 .page-index-arrow { color: var(--accent-soft); justify-self: end; transition: transform 0.25s ease, color 0.25s ease; }
 .page-index a:hover { padding-left: 10px; }
 .page-index a:hover .page-index-arrow { color: var(--ink); transform: translateX(4px); }
@@ -354,7 +358,8 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .page { padding: 56px 6% 80px; }
   .page-index { padding-top: 64px; }
   .page-index a { grid-template-columns: 36px minmax(0, 1fr) 20px; gap: 6px 14px; padding: 22px 0; }
-  .page-index-intro { grid-column: 2; grid-row: 2; font-size: 14px; }
+  .page-index-text { grid-column: 2; grid-row: 2; }
+  .page-index-intro { font-size: 14px; }
   .page-index-arrow { grid-column: 3; grid-row: 1; }
   .page-index-title { font-size: 19px; }
   .page-intro, .about-copy { font-size: 16px; }

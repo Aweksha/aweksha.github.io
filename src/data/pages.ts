@@ -10,19 +10,19 @@ export const pages = [
     id: "experience",
     label: "Experience Scrapbook",
     eyebrow: "Where I’ve been",
-    intro: "A collection of roles, lessons, and work along the way.",
+    intro: "An internship, research, and teaching roles, and what each one taught me about building software and leading teams.",
   },
   {
     id: "projects",
     label: "Selected Projects",
     eyebrow: "Things I build",
-    intro: "A closer look at the problems, decisions, and details behind the work.",
+    intro: "Full-stack, data, and fintech builds, with the problems, decisions, and tradeoffs behind each one.",
   },
   {
     id: "academic",
     label: "Academic Work",
     eyebrow: "From the classroom",
-    intro: "Coursework, research, and school projects worth a closer look.",
+    intro: "A 4.0 GPA, class projects, and the coursework behind them, from machine learning to project management.",
   },
   {
     id: "fun",
@@ -34,7 +34,7 @@ export const pages = [
     id: "about",
     label: "About Me",
     eyebrow: "The person behind the work",
-    intro: "Computer science, teaching, and learning by building.",
+    intro: "Who I am, how I work, and what I’m looking for next.",
   },
   {
     id: "contact",
