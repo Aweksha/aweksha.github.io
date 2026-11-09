@@ -7,6 +7,7 @@ import { courses } from "./academics";
 import { experiences } from "./experience";
 import { projects } from "./projects";
 import { pages } from "./pages";
+import { tickerItems } from "./ticker";
 import { isValidRoute, parseHash } from "../routes";
 
 const duplicates = (values: string[]) => values.filter((v, i) => values.indexOf(v) !== i);
@@ -28,6 +29,24 @@ describe("routing", () => {
     expect(isValidRoute("#experience/janus-henderson")).toBe(true);
     expect(isValidRoute("#experience/no-such-role")).toBe(false);
     expect(isValidRoute("#nowhere")).toBe(false);
+  });
+
+  it("links to a project card only on a tab that shows it", () => {
+    expect(isValidRoute("#projects/bondmind")).toBe(true);
+    expect(isValidRoute("#academic/predixa")).toBe(true);
+    expect(isValidRoute("#fun/bondmind")).toBe(false);
+    expect(isValidRoute("#projects/no-such-project")).toBe(false);
+  });
+});
+
+describe("ticker", () => {
+  it("has six items or fewer, each with a unique tag", () => {
+    expect(tickerItems.length).toBeLessThanOrEqual(6);
+    expect(duplicates(tickerItems.map((t) => t.tag))).toEqual([]);
+  });
+
+  it.each(tickerItems.map((t) => [t.tag, t] as const))("%s links to a real page", (_, t) => {
+    expect(isValidRoute(t.href)).toBe(true);
   });
 });
 

@@ -15,7 +15,7 @@ export function ProjectCard({ project, onExperiencePage = false }: { project: Pr
   const tab = pages.find((p) => p.id === project.category);
 
   return (
-    <li className="project-card">
+    <li className="project-card" id={`project-${project.id}`}>
       {project.image && <img className="project-image" src={project.image.src} alt={project.image.alt} loading="lazy" />}
       <div className="project-body">
         {(project.meta || project.status) && (

@@ -49,6 +49,18 @@ function App() {
     return () => window.removeEventListener("hashchange", navigate);
   }, []);
 
+  // "#projects/bondmind" opens the tab, then scrolls to that card and briefly highlights it.
+  useEffect(() => {
+    if (!detail || active === "experience") return;
+    const card = document.getElementById(`project-${detail}`);
+    if (!card) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    card.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    card.classList.add("is-highlighted");
+    const timer = window.setTimeout(() => card.classList.remove("is-highlighted"), 1800);
+    return () => window.clearTimeout(timer);
+  }, [active, detail]);
+
   useEffect(() => {
     const label = experience ? `${experience.role}, ${experience.organization}` : page?.label;
     document.title = label ? `${label} · ${profile.name}` : `${profile.name} · Computer Science`;
