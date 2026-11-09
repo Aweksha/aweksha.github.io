@@ -114,8 +114,11 @@ export const projects: Project[] = [
     title: "Research Migration Lab",
     category: "projects",
     meta: "Personal project · Nov 2026",
-    summary: "An interactive ETL simulator that takes bond research documents through extract, classify, transform, validate, and load into a data warehouse in the browser, then syncs them to a simulated research system. Every stage is animated, so you can watch the data move.",
+    status: "Simulation",
+    experience: "janus",
+    summary: "A simulation of the research migration project from my Janus Henderson internship, rebuilt from scratch so I can show how that kind of pipeline works. Bond research documents go through extract, classify, transform, validate, and load into a data warehouse in the browser, then sync to a simulated research system, and every stage is animated so you can watch the data move.",
     highlights: [
+      "A representation, not the real thing: it uses synthetic documents, schemas I designed, and a stand-in research system. None of Janus Henderson’s code, data, or systems are in it",
       "Parses uploaded HTML and text files safely: the document is never attached to the page, and scripts, styles, and embeds are stripped. One sample hides a script to prove it never runs",
       "Classifies sections with deterministic rules and normalizes dates, percentages, issuer names, and bond types, keeping a trace from every field back to the line it came from",
       "Never writes a record that fails validation. Each document goes into the warehouse in a single IndexedDB transaction, and duplicate content is caught by a SHA-256 hash",
