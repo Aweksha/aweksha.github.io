@@ -14,6 +14,7 @@ function TickerGroup({ hidden = false }: { hidden?: boolean }) {
               {item.value}
               {item.up && <span className="ticker-up" aria-hidden="true">▲</span>}
             </span>
+            {item.note && <span className="ticker-note">{item.note}</span>}
             <span className="ticker-arrow" aria-hidden="true">→</span>
           </a>
           <span className="ticker-divider" aria-hidden="true">~</span>

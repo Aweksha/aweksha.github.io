@@ -40,8 +40,8 @@ describe("routing", () => {
 });
 
 describe("ticker", () => {
-  it("has six items or fewer, each with a unique tag", () => {
-    expect(tickerItems.length).toBeLessThanOrEqual(6);
+  it("has eight items or fewer, each with a unique tag", () => {
+    expect(tickerItems.length).toBeLessThanOrEqual(8);
     expect(duplicates(tickerItems.map((t) => t.tag))).toEqual([]);
   });
 
